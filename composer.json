@@ -1,0 +1,31 @@
+{
+    "name": "daniel-de-wit/nova-paperclip",
+    "description": "Laravel Nova fields for laravel-paperclip attachments.",
+    "keywords": [
+        "laravel",
+        "nova",
+        "laravel-paperclip",
+        "paperclip"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": ">=7.1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "DanielDeWit\\NovaPaperclip\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "DanielDeWit\\NovaPaperclip\\FieldServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
