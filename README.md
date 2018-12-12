@@ -1,7 +1,7 @@
 # nova-paperclip
 Laravel Nova fields for laravel-paperclip attachments.
 
-![Screenshot](https://github.com/daniel-de-wit/nova-paperclip/blob/master/screenshot.png)
+![Screenshot](https://github.com/daniel-de-wit/nova-paperclip/raw/master/screenshot.png)
 
 ## Installation
 
