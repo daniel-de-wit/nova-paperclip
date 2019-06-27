@@ -47,13 +47,9 @@ class PaperclipFile extends File
                 return $this->value ? $this->value : null;
             })
             ->delete(function (NovaRequest $request, Model $model) {
-                $model->update([
-                    $this->attribute => Attachment::NULL_ATTACHMENT,
-                ]);
-
-                return [
-                    $this->attribute => null,
-                ];
+                $model->{$this->attribute} = Attachment::NULL_ATTACHMENT;
+                $model->save();
+                return;
             });
     }
 
