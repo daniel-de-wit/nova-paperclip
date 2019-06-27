@@ -13,7 +13,7 @@ class PaperclipFile extends File
     /**
      * @var string
      */
-    public $component = 'paperclip-file';
+    public $component = 'file-field';
 
     /**
      * @var int
