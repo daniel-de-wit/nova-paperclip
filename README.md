@@ -6,7 +6,7 @@ Laravel Nova fields for laravel-paperclip attachments.
 ## Installation
 
 ```
-composer update daniel-de-wit/nova-paperclip
+composer require daniel-de-wit/nova-paperclip
 ```
 
 ## Fields
