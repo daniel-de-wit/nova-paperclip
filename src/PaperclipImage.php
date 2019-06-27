@@ -14,7 +14,7 @@ class PaperclipImage extends PaperclipFile
     /**
      * @var string
      */
-    public $component = 'paperclip-image';
+    public $component = 'file-field';
 
     /**
      * Create a new field.
