@@ -16,13 +16,6 @@
             "DanielDeWit\\NovaPaperclip\\": "src/"
         }
     },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "DanielDeWit\\NovaPaperclip\\FieldServiceProvider"
-            ]
-        }
-    },
     "config": {
         "sort-packages": true
     },

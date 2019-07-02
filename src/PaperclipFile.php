@@ -11,11 +11,6 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 class PaperclipFile extends File
 {
     /**
-     * @var string
-     */
-    public $component = 'file-field';
-
-    /**
      * @var int
      */
     protected $width;

@@ -12,11 +12,6 @@ class PaperclipImage extends PaperclipFile
     public $showOnIndex = true;
 
     /**
-     * @var string
-     */
-    public $component = 'file-field';
-
-    /**
      * Create a new field.
      *
      * @param  string  $name
