@@ -5,62 +5,46 @@ namespace DanielDeWit\NovaPaperclip;
 use Czim\Paperclip\Attachment\Attachment;
 use Czim\Paperclip\Contracts\AttachmentInterface;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Nova\Fields\File;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class PaperclipFile extends File
 {
     /**
-     * @var int
-     */
-    protected $width;
-
-    /**
-     * @param  string  $name
-     * @param  string  $attribute
-     * @param  string|null  $disk
-     * @param  callable|null  $storageCallback
+     * @param string $name
+     * @param string $attribute
+     * @param string|null $disk
+     * @param callable|null $storageCallback
      * @return void
      */
     public function __construct($name, $attribute = null, $disk = 'public', $storageCallback = null)
     {
         parent::__construct($name, $attribute, $disk, $storageCallback);
 
-        $this->prepareStorageCallback($storageCallback);
-
         $this
             ->resolveUsing(function (AttachmentInterface $file) {
-                return null;
+                return $file->exists() ? $file->originalFilename() : null;
             })
-            ->thumbnail(function () {
-                return null;
-            })
-            ->preview(function () {
-                return null;
-            })
-            ->download(function () {
-                return $this->value ? $this->value : null;
+            ->download(function ($request, $model) {
+                /** @var Attachment $attachment */
+                $attachment = $model->{$this->attribute};
+
+                /** @var Storage $storage */
+                $storage = $model->{$this->attribute}->getStorage();
+
+                return Storage::disk($storage)->download($attachment->path(), $attachment->originalFilename());
             })
             ->delete(function (NovaRequest $request, Model $model) {
+                if ( ! $this->value) {
+                    return;
+                }
+
                 $model->{$this->attribute} = Attachment::NULL_ATTACHMENT;
                 $model->save();
+
                 return;
             });
-    }
-
-    /**
-     * Prepare the storage callback.
-     *
-     * @param  callable|null  $storageCallback
-     * @return void
-     */
-    protected function prepareStorageCallback($storageCallback)
-    {
-        $this->storageCallback = function ($request, $model) {
-            if ($request->{$this->attribute}) {
-                $model->{$this->attribute} = $request->{$this->attribute};
-            }
-        };
     }
 
     public function mimes(array $mimes)

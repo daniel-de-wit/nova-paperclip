@@ -29,13 +29,7 @@ class PaperclipImage extends PaperclipFile
                 return $image->exists() ? $image->url() : null;
             })
             ->thumbnail(function () {
-                return $this->value ? $this->value : null;
-            })
-            ->preview(function () {
-                return $this->value ? $this->value : null;
-            })
-            ->download(function () {
-                return $this->value ? $this->value : null;
+                return $this->value;
             });
     }
 
