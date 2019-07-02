@@ -13,7 +13,6 @@ composer require daniel-de-wit/nova-paperclip
 
  - PaperclipFile
  - PaperclipImage
- - PaperclipVideo
 
 ## Usage
 
