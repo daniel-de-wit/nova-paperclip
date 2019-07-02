@@ -22,6 +22,8 @@ class PaperclipFile extends File
     {
         parent::__construct($name, $attribute, $disk, $storageCallback);
 
+        $this->prepareStorageCallback($storageCallback);
+
         $this
             ->resolveUsing(function (AttachmentInterface $file) {
                 return $file->exists() ? $file->originalFilename() : null;
@@ -45,6 +47,21 @@ class PaperclipFile extends File
 
                 return;
             });
+    }
+
+    /**
+     * Prepare the storage callback.
+     *
+     * @param  callable|null  $storageCallback
+     * @return void
+     */
+    protected function prepareStorageCallback($storageCallback)
+    {
+        $this->storageCallback = function ($request, $model) {
+            if ($request->{$this->attribute}) {
+                $model->{$this->attribute} = $request->{$this->attribute};
+            }
+        };
     }
 
     public function mimes(array $mimes)
