@@ -10,7 +10,7 @@
     "license": "MIT",
     "require": {
         "php": ">=7.1.0",
-        "czim/laravel-paperclip": "^2.7"
+        "czim/laravel-paperclip": "^2.7|^3.0"
     },
     "autoload": {
         "psr-4": {
