@@ -8,17 +8,11 @@
         "paperclip"
     ],
     "license": "MIT",
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://nova.laravel.com"
-        }
-    ],
     "require": {
-        "php": "^7.2.5|^8.0",
-        "czim/laravel-paperclip": "^2.7|^3.0",
-        "illuminate/database": "^7.0|^8.0",
-        "laravel/nova": "^1.0|^2.0|^3.0"
+        "php": "^7.2.5 || ^8.0",
+        "czim/laravel-paperclip": "^2.7 || ^3.0",
+        "illuminate/database": "^7.0 || ^8.0",
+        "laravel/nova": "^1.0 || ^2.0 || ^3.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.18",
@@ -28,6 +22,9 @@
         "phpstan/phpstan-phpunit": "^0.12.18",
         "phpunit/phpunit": "^9.5",
         "thecodingmachine/phpstan-safe-rule": "^1.0"
+    },
+    "config": {
+        "sort-packages": true
     },
     "autoload": {
         "psr-4": {
@@ -39,9 +36,12 @@
             "DanielDeWit\\NovaPaperclip\\Tests\\": "tests/"
         }
     },
-    "config": {
-        "sort-packages": true
-    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
+        }
+    ],
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
