@@ -64,6 +64,36 @@ class PaperclipFile extends File
         };
     }
 
+    /**
+     * @param NovaRequest $request
+     * @return mixed[]
+     */
+    public function getUpdateRules(NovaRequest $request): array
+    {
+        $rules = parent::getUpdateRules($request);
+
+        if (! array_key_exists($this->attribute, $rules)) {
+            return $rules;
+        }
+
+        if (! in_array('required', $rules[$this->attribute])) {
+            return $rules;
+        }
+
+        $model = $request->findModelOrFail($request->route('resourceId'));
+
+        /** @var AttachmentInterface $attachment */
+        $attachment = $model->getAttribute($this->attribute);
+
+        if ($attachment->exists()) {
+            $requiredIndex = array_search('required', $rules[$this->attribute]);
+
+            unset($rules[$this->attribute][$requiredIndex]);
+        }
+
+        return $rules;
+    }
+
     public function mimes(array $mimes)
     {
         $this->withMeta([

@@ -8,13 +8,32 @@
         "paperclip"
     ],
     "license": "MIT",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
+        }
+    ],
     "require": {
-        "php": ">=7.1.0",
-        "czim/laravel-paperclip": "^2.7|^3.0"
+        "php": "^7.2.5|^8.0",
+        "czim/laravel-paperclip": "^2.7|^3.0",
+        "illuminate/database": "^7.0|^8.0",
+        "laravel/nova": "^1.0|^2.0|^3.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.7",
+        "phpstan/phpstan-mockery": "^0.12.13",
+        "phpstan/phpstan-phpunit": "^0.12.18",
+        "phpunit/phpunit": "^9.5"
     },
     "autoload": {
         "psr-4": {
             "DanielDeWit\\NovaPaperclip\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "DanielDeWit\\NovaPaperclip\\Tests\\": "tests/"
         }
     },
     "config": {
