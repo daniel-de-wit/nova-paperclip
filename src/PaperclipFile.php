@@ -32,20 +32,17 @@ class PaperclipFile extends File
                 /** @var Attachment $attachment */
                 $attachment = $model->{$this->attribute};
 
-                /** @var Storage $storage */
                 $storage = $model->{$this->attribute}->getStorage();
 
                 return Storage::disk($storage)->download($attachment->path(), $attachment->originalFilename());
             })
             ->delete(function (NovaRequest $request, Model $model) {
-                if ( ! $this->value) {
+                if (! $this->value) {
                     return;
                 }
 
                 $model->{$this->attribute} = Attachment::NULL_ATTACHMENT;
                 $model->save();
-
-                return;
             });
     }
 
@@ -94,7 +91,11 @@ class PaperclipFile extends File
         return $rules;
     }
 
-    public function mimes(array $mimes)
+    /**
+     * @param string[] $mimes
+     * @return $this
+     */
+    public function mimes(array $mimes): self
     {
         $this->withMeta([
             'mimes' => $mimes,
@@ -103,7 +104,7 @@ class PaperclipFile extends File
         return $this;
     }
 
-    public function min(int $min)
+    public function min(int $min): self
     {
         $this->withMeta([
             'min' => $min,
@@ -112,7 +113,7 @@ class PaperclipFile extends File
         return $this;
     }
 
-    public function max(int $max)
+    public function max(int $max): self
     {
         $this->withMeta([
             'max' => $max,
@@ -121,7 +122,7 @@ class PaperclipFile extends File
         return $this;
     }
 
-    public function size(int $size)
+    public function size(int $size): self
     {
         $this->withMeta([
             'size' => $size,

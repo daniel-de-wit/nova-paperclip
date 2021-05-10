@@ -21,10 +21,13 @@
         "laravel/nova": "^1.0|^2.0|^3.0"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.18",
+        "nunomaduro/larastan": "^0.7.3",
         "orchestra/testbench": "^6.7",
         "phpstan/phpstan-mockery": "^0.12.13",
         "phpstan/phpstan-phpunit": "^0.12.18",
-        "phpunit/phpunit": "^9.5"
+        "phpunit/phpunit": "^9.5",
+        "thecodingmachine/phpstan-safe-rule": "^1.0"
     },
     "autoload": {
         "psr-4": {
@@ -40,5 +43,18 @@
         "sort-packages": true
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "scripts": {
+        "analyze": "@php vendor/phpstan/phpstan/phpstan analyse --memory-limit 1G",
+        "check-style": [
+            "php-cs-fixer fix --diff --diff-format=udiff --dry-run",
+            "php-cs-fixer fix --diff --diff-format=udiff --dry-run --config=.php_cs.tests.php"
+        ],
+        "coverage": "@php vendor/phpunit/phpunit/phpunit",
+        "fix-style": [
+            "php-cs-fixer fix",
+            "php-cs-fixer fix --config=.php_cs.tests.php"
+        ],
+        "test": "@php vendor/phpunit/phpunit/phpunit --no-coverage"
+    }
 }

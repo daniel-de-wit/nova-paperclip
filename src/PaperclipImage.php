@@ -33,7 +33,7 @@ class PaperclipImage extends PaperclipFile
             });
     }
 
-    public function width(int $width)
+    public function width(int $width): self
     {
         $this->withMeta([
             'width' => $width,
@@ -42,7 +42,7 @@ class PaperclipImage extends PaperclipFile
         return $this;
     }
 
-    public function minWidth(int $width)
+    public function minWidth(int $width): self
     {
         $this->withMeta([
             'minWidth' => $width,
@@ -51,7 +51,7 @@ class PaperclipImage extends PaperclipFile
         return $this;
     }
 
-    public function maxWidth(int $width)
+    public function maxWidth(int $width): self
     {
         $this->withMeta([
             'maxWidth' => $width,
@@ -60,7 +60,7 @@ class PaperclipImage extends PaperclipFile
         return $this;
     }
 
-    public function height(int $height)
+    public function height(int $height): self
     {
         $this->withMeta([
             'height' => $height,
@@ -69,7 +69,7 @@ class PaperclipImage extends PaperclipFile
         return $this;
     }
 
-    public function minHeight(int $height)
+    public function minHeight(int $height): self
     {
         $this->withMeta([
             'minHeight' => $height,
@@ -78,7 +78,7 @@ class PaperclipImage extends PaperclipFile
         return $this;
     }
 
-    public function maxHeight(int $height)
+    public function maxHeight(int $height): self
     {
         $this->withMeta([
             'maxHeight' => $height,

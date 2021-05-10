@@ -16,6 +16,9 @@
         <include>
             <directory suffix=".php">./src</directory>
         </include>
+        <report>
+            <clover outputFile="./build/logs/clover.xml"/>
+        </report>
     </coverage>
     <php>
         <env name="DB_CONNECTION" value="testing"/>
