@@ -17,6 +17,7 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.18",
+        "illuminate/database": "^8.2",
         "nunomaduro/larastan": "^0.7.3",
         "orchestra/testbench": "^6.7",
         "phpstan/phpstan-mockery": "^0.12.13",
