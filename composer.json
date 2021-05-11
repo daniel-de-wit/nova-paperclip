@@ -9,10 +9,11 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.2.5 || ^8.0",
-        "czim/laravel-paperclip": "^2.7 || ^3.0",
-        "illuminate/database": "^7.0 || ^8.0",
-        "laravel/nova": "^1.0 || ^2.0 || ^3.0"
+        "php": "^7.2.5|^8.0",
+        "cakephp/chronos": "^2.0",
+        "czim/laravel-paperclip": "^3.0",
+        "illuminate/database": "^7.0|^8.0",
+        "laravel/nova": "^3.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.18",
