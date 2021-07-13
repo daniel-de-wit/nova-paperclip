@@ -32,20 +32,17 @@ class PaperclipFile extends File
                 /** @var Attachment $attachment */
                 $attachment = $model->{$this->attribute};
 
-                /** @var Storage $storage */
                 $storage = $model->{$this->attribute}->getStorage();
 
                 return Storage::disk($storage)->download($attachment->path(), $attachment->originalFilename());
             })
             ->delete(function (NovaRequest $request, Model $model) {
-                if ( ! $this->value) {
+                if (! $this->value) {
                     return;
                 }
 
                 $model->{$this->attribute} = Attachment::NULL_ATTACHMENT;
                 $model->save();
-
-                return;
             });
     }
 
@@ -64,7 +61,41 @@ class PaperclipFile extends File
         };
     }
 
-    public function mimes(array $mimes)
+    /**
+     * @param NovaRequest $request
+     * @return mixed[]
+     */
+    public function getUpdateRules(NovaRequest $request): array
+    {
+        $rules = parent::getUpdateRules($request);
+
+        if (! array_key_exists($this->attribute, $rules)) {
+            return $rules;
+        }
+
+        if (! in_array('required', $rules[$this->attribute])) {
+            return $rules;
+        }
+
+        $model = $request->findModelOrFail($request->route('resourceId'));
+
+        /** @var AttachmentInterface $attachment */
+        $attachment = $model->getAttribute($this->attribute);
+
+        if ($attachment->exists()) {
+            $requiredIndex = array_search('required', $rules[$this->attribute]);
+
+            unset($rules[$this->attribute][$requiredIndex]);
+        }
+
+        return $rules;
+    }
+
+    /**
+     * @param string[] $mimes
+     * @return $this
+     */
+    public function mimes(array $mimes): self
     {
         $this->withMeta([
             'mimes' => $mimes,
@@ -73,7 +104,7 @@ class PaperclipFile extends File
         return $this;
     }
 
-    public function min(int $min)
+    public function min(int $min): self
     {
         $this->withMeta([
             'min' => $min,
@@ -82,7 +113,7 @@ class PaperclipFile extends File
         return $this;
     }
 
-    public function max(int $max)
+    public function max(int $max): self
     {
         $this->withMeta([
             'max' => $max,
@@ -91,7 +122,7 @@ class PaperclipFile extends File
         return $this;
     }
 
-    public function size(int $size)
+    public function size(int $size): self
     {
         $this->withMeta([
             'size' => $size,

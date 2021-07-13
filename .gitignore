@@ -1,5 +1,10 @@
-/vendor
-/node_modules
-composer.phar
+.php_cs.cache
+.php_cs.tests.cache
+.phpunit.cache
+auth.json
+build
 composer.lock
+composer.phar
+phpstan.neon
 phpunit.xml
+vendor
