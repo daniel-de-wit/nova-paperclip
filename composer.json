@@ -1,13 +1,13 @@
 {
     "name": "daniel-de-wit/nova-paperclip",
     "description": "Laravel Nova fields for laravel-paperclip attachments.",
+    "license": "MIT",
     "keywords": [
         "laravel",
         "nova",
         "laravel-paperclip",
         "paperclip"
     ],
-    "license": "MIT",
     "require": {
         "php": "^7.2.5 || ^8.0",
         "cakephp/chronos": "^2.0",
@@ -24,9 +24,14 @@
         "phpunit/phpunit": "^9.5",
         "thecodingmachine/phpstan-safe-rule": "^1.0"
     },
-    "config": {
-        "sort-packages": true
-    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "DanielDeWit\\NovaPaperclip\\": "src/"
@@ -37,14 +42,9 @@
             "DanielDeWit\\NovaPaperclip\\Tests\\": "tests/"
         }
     },
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://nova.laravel.com"
-        }
-    ],
-    "minimum-stability": "dev",
-    "prefer-stable": true,
+    "config": {
+        "sort-packages": true
+    },
     "scripts": {
         "analyze": "@php vendor/phpstan/phpstan/phpstan analyse --memory-limit 1G",
         "check-style": [
