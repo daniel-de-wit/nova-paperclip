@@ -25,7 +25,8 @@ class PaperclipFile extends File
         $this->prepareStorageCallback($storageCallback);
 
         $this
-            ->resolveUsing(function (AttachmentInterface $file) {
+            ->resolveUsing(function ($file, $resource, $attribute) {
+                /** @var AttachmentInterface $file */
                 return $file->exists() ? $file->originalFilename() : null;
             })
             ->download(function ($request, $model) {

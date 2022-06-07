@@ -11,6 +11,9 @@ use Laravel\Nova\Fields\Field;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Resource;
 
+/**
+ * @extends Resource<ModelWithImage>
+ */
 class ModelWithImageResource extends Resource
 {
     /**

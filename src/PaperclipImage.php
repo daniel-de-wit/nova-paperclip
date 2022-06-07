@@ -25,11 +25,15 @@ class PaperclipImage extends PaperclipFile
         parent::__construct($name, $attribute, $disk, $storageCallback);
 
         $this
-            ->resolveUsing(function (AttachmentInterface $image) {
+            ->resolveUsing(function ($image, $resource, $attribute) {
+                /** @var AttachmentInterface $image */
                 return $image->exists() ? $image->url() : null;
             })
-            ->thumbnail(function () {
-                return $this->value;
+            ->thumbnail(function ($value, string $disk, $resource): ?string {
+                /** @var string|null $thumbnail */
+                $thumbnail = $this->value;
+
+                return $thumbnail;
             });
     }
 
