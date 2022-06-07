@@ -29,11 +29,17 @@ abstract class AbstractIntegrationTest extends TestCase
      */
     protected function getPackageProviders($app): array
     {
-        return [
+        $providers = [
             NovaCoreServiceProvider::class,
             NovaServiceProvider::class,
             PaperclipServiceProvider::class,
         ];
+
+        if (class_exists('Inertia\\ServiceProvider')) {
+            $providers[] = 'Inertia\\ServiceProvider';
+        }
+
+        return $providers;
     }
 
     protected function defineDatabaseMigrations(): void

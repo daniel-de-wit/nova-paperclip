@@ -12,15 +12,15 @@
         "php": "^7.2.5 || ^8.0",
         "cakephp/chronos": "^2.0",
         "czim/laravel-paperclip": "^3.0 || ^4.0",
-        "illuminate/database": "^7.0 || ^8.2 || ^9.0",
-        "laravel/nova": "^3.0"
+        "laravel/framework": "^8.74 || ^9.0",
+        "laravel/nova": "^3.0 || ^4.0"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.18",
-        "nunomaduro/larastan": "^0.7.3",
-        "orchestra/testbench": "^6.7",
-        "phpstan/phpstan-mockery": "^0.12.13",
-        "phpstan/phpstan-phpunit": "^0.12.18",
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "nunomaduro/larastan": "^1.0 || ^2.0",
+        "orchestra/testbench": "^6.7 || ^7.0",
+        "phpstan/phpstan-mockery": "^1.0",
+        "phpstan/phpstan-phpunit": "^1.0",
         "phpunit/phpunit": "^9.5",
         "thecodingmachine/phpstan-safe-rule": "^1.0"
     },
@@ -48,8 +48,8 @@
     "scripts": {
         "analyze": "@php vendor/phpstan/phpstan/phpstan analyse --memory-limit 1G",
         "check-style": [
-            "php-cs-fixer fix --diff --diff-format=udiff --dry-run",
-            "php-cs-fixer fix --diff --diff-format=udiff --dry-run --config=.php_cs.tests.php"
+            "php-cs-fixer fix --diff --dry-run",
+            "php-cs-fixer fix --diff --dry-run --config=.php_cs.tests.php"
         ],
         "coverage": "@php vendor/phpunit/phpunit/phpunit",
         "fix-style": [

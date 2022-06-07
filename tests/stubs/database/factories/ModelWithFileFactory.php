@@ -7,6 +7,9 @@ namespace DanielDeWit\NovaPaperclip\Tests\stubs\database\factories;
 use DanielDeWit\NovaPaperclip\Tests\stubs\App\Models\ModelWithFile;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+/**
+ * @extends Factory<ModelWithFile>
+ */
 class ModelWithFileFactory extends Factory
 {
     protected $model = ModelWithFile::class;

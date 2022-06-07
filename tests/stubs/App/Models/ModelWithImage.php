@@ -7,7 +7,6 @@ namespace DanielDeWit\NovaPaperclip\Tests\stubs\App\Models;
 use Czim\Paperclip\Contracts\AttachableInterface;
 use Czim\Paperclip\Model\PaperclipTrait;
 use DanielDeWit\NovaPaperclip\Tests\stubs\database\factories\ModelWithImageFactory;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -35,7 +34,7 @@ class ModelWithImage extends Model implements AttachableInterface
         parent::__construct($attributes);
     }
 
-    protected static function newFactory(): Factory
+    protected static function newFactory(): ModelWithImageFactory
     {
         return new ModelWithImageFactory();
     }

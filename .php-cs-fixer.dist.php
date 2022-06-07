@@ -1,13 +1,17 @@
 <?php
+
+use PhpCsFixer\Config;
+use PhpCsFixer\Finder;
+
 require __DIR__ . '/vendor/autoload.php';
 
-$finder = PhpCsFixer\Finder::create()
+$finder = (new Finder())
     ->in(__DIR__)
     ->exclude('tests');
 
 $config = require __DIR__ . '/.php_cs.common.php';
 
-return PhpCsFixer\Config::create()
+return (new Config())
     ->setFinder($finder)
     ->setRules($config)
     ->setRiskyAllowed(true)
