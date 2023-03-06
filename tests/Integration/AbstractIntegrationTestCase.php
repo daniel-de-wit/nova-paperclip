@@ -12,7 +12,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Nova\NovaCoreServiceProvider;
 use Orchestra\Testbench\TestCase;
 
-abstract class AbstractIntegrationTest extends TestCase
+abstract class AbstractIntegrationTestCase extends TestCase
 {
     use RefreshDatabase;
 
