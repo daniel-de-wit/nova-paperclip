@@ -1,6 +1,7 @@
 .php_cs.cache
 .php_cs.tests.cache
 .phpunit.cache
+.phpunit.result.cache
 auth.json
 build
 composer.lock

@@ -8,7 +8,7 @@ use DanielDeWit\NovaPaperclip\Tests\stubs\App\Models\ModelWithFile;
 use DanielDeWit\NovaPaperclip\Tests\stubs\App\Nova\Resources\ModelWithFileResource;
 use Illuminate\Http\UploadedFile;
 
-class PaperclipFileTest extends AbstractIntegrationTest
+class PaperclipFileTest extends AbstractIntegrationTestCase
 {
     /**
      * @test
