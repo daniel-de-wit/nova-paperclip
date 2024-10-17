@@ -7,12 +7,11 @@ namespace DanielDeWit\NovaPaperclip\Tests\Integration;
 use DanielDeWit\NovaPaperclip\Tests\stubs\App\Models\ModelWithImage;
 use DanielDeWit\NovaPaperclip\Tests\stubs\App\Nova\Resources\ModelWithImageResource;
 use Illuminate\Http\UploadedFile;
+use PHPUnit\Framework\Attributes\Test;
 
 class PaperclipImageTest extends AbstractIntegrationTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function it_updates_a_resource_without_an_image_for_a_model_that_has_an_image(): void
     {
         $model = ModelWithImage::factory()->create([
@@ -23,9 +22,7 @@ class PaperclipImageTest extends AbstractIntegrationTestCase
             ->assertJsonMissingValidationErrors('image');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_returns_an_error_when_updating_a_resource_without_an_image_for_a_model_that_does_not_have_an_image(): void
     {
         $model = ModelWithImage::factory()->create([
@@ -36,9 +33,7 @@ class PaperclipImageTest extends AbstractIntegrationTestCase
             ->assertJsonValidationErrors('image');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_returns_an_error_when_updating_a_resource_without_an_image_for_a_model_that_had_an_image(): void
     {
         $model = ModelWithImage::factory()->create([
